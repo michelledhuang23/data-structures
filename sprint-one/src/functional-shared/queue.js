@@ -15,14 +15,14 @@ queueMethods.size = function() {
 };
 
 queueMethods.enqueue = function(value) {
-  if (this.size() === 0) {
+  if (this.length === 0) {
     this[0] = value;
     this.length++;
   } else {
-    this[this.size()] = value;
+    this[this.length] = value;
     this.length++;
   }
-  return this.size();
+  return this.length;
 };
 
 queueMethods.dequeue = function() {
@@ -30,10 +30,10 @@ queueMethods.dequeue = function() {
     return undefined;
   }
   var removedItem = this[0];
-  for (var i = 0; i < this.size(); i++) {
+  for (var i = 0; i < this.length; i++) {
     this[i] = this[i + 1];
   }
-  delete this[this.size() - 1];
+  delete this[this.length - 1];
   this.length--;
   return removedItem;
 };
